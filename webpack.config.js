@@ -4,8 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
-function initCanisterEnv() {
-  let localCanisters, prodCanisters;
+let localCanisters, prodCanisters, canisters;
+
+function initCanisterIds() {
   try {
     localCanisters = require(path.resolve(".dfx", "local", "canister_ids.json"));
   } catch (error) {
@@ -17,23 +18,26 @@ function initCanisterEnv() {
     console.log("No production canister_ids.json found. Continuing with local");
   }
 
-  const network = process.env.DFX_NETWORK || (process.env.NODE_ENV === "production" ? "ic" : "local");
+  const network =
+    process.env.DFX_NETWORK ||
+    (process.env.NODE_ENV === "production" ? "ic" : "local");
 
-  const canisterConfig = network === "local" ? localCanisters : prodCanisters;
+  canisters = network === "local" ? localCanisters : prodCanisters;
 
-  return Object.entries(canisterConfig).reduce((prev, current) => {
-    const [canisterName, canisterDetails] = current;
-    prev[canisterName.toUpperCase() + "_CANISTER_ID"] = canisterDetails[network];
-    return prev;
-  }, {});
+  for (const canister in canisters) {
+    process.env[canister.toUpperCase() + "_CANISTER_ID"] =
+      canisters[canister][network];
+  }
 }
-const canisterEnvVariables = initCanisterEnv();
+initCanisterIds();
 
 const isDevelopment = process.env.NODE_ENV !== "production";
-
-const frontendDirectory = "minter_assets";
-
-const asset_entry = path.join("src", frontendDirectory, "src", "index.html");
+const asset_entry = path.join(
+  "src",
+  "nftminter_assets",
+  "src",
+  "index.html"
+);
 
 module.exports = {
   target: "web",
@@ -41,7 +45,7 @@ module.exports = {
   entry: {
     // The frontend.entrypoint points to the HTML file for this build, so we need
     // to replace the extension to `.js`.
-    index: path.join(__dirname, asset_entry).replace(/\.html$/, ".js"),
+    index: path.join(__dirname, asset_entry).replace(/\.html$/, ".jsx"),
   },
   devtool: isDevelopment ? "source-map" : false,
   optimization: {
@@ -60,7 +64,7 @@ module.exports = {
   },
   output: {
     filename: "index.js",
-    path: path.join(__dirname, "dist", frontendDirectory),
+    path: path.join(__dirname, "dist", "nftminter_assets"),
   },
 
   // Depending in the language or framework you are using for
@@ -68,28 +72,35 @@ module.exports = {
   // webpack configuration. For example, if you are using React
   // modules and CSS as described in the "Adding a stylesheet"
   // tutorial, uncomment the following lines:
-  // module: {
-  //  rules: [
-  //    { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
-  //    { test: /\.css$/, use: ['style-loader','css-loader'] }
-  //  ]
-  // },
+  module: {
+    rules: [
+      { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
+      //  Loading SVG
+      { test: /\.(svg)$/, use: [{ loader: 'file-loader' }] },
+      // Loading CSS modules
+      { test: /\.css$/, use: ["style-loader", { loader: "css-loader", options: { importLoaders: 1, modules: true } }], include: /\.module\.css$/ },
+      // Loading CSS
+      { test: /\.css$/, use: ["style-loader", "css-loader"], exclude: /\.module\.css$/ },
+      // file loader
+      { test: /\.(png|jpe?g|gif)$/i, use: [{ loader: 'file-loader' }] },
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, asset_entry),
-      cache: false,
+      cache: false
     }),
     new CopyPlugin({
       patterns: [
         {
-          from: path.join(__dirname, "src", frontendDirectory, "assets"),
-          to: path.join(__dirname, "dist", frontendDirectory),
+          from: path.join(__dirname, "src", "nftminter_assets", "assets"),
+          to: path.join(__dirname, "dist", "nftminter_assets"),
         },
       ],
     }),
     new webpack.EnvironmentPlugin({
-      NODE_ENV: "development",
-      ...canisterEnvVariables,
+      NODE_ENV: 'development',
+      NFTMINTER_CANISTER_ID: canisters["nftminter"]
     }),
     new webpack.ProvidePlugin({
       Buffer: [require.resolve("buffer/"), "Buffer"],
@@ -100,7 +111,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:8000",
+        target: "http://localhost:8000",
         changeOrigin: true,
         pathRewrite: {
           "^/api": "/api",
@@ -108,7 +119,7 @@ module.exports = {
       },
     },
     hot: true,
-    watchFiles: [path.resolve(__dirname, "src", frontendDirectory)],
-    liveReload: true,
+    contentBase: path.resolve(__dirname, "./src/nftminter_assets"),
+    watchContentBase: true
   },
 };

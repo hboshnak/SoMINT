@@ -1,19 +1,19 @@
 {
   "canisters": {
-    "minter": {
-      "main": "src/minter/main.mo",
+    "nftminter": {
+      "main": "src/nftminter/main.mo",
       "type": "motoko"
     },
-    "minter_assets": {
+    "nftminter_assets": {
       "dependencies": [
-        "minter"
+        "nftminter"
       ],
       "frontend": {
-        "entrypoint": "src/minter_assets/src/index.html"
+        "entrypoint": "src/nftminter_assets/src/index.html"
       },
       "source": [
-        "src/minter_assets/assets",
-        "dist/minter_assets/"
+        "src/nftminter_assets/assets",
+        "dist/nftminter_assets/"
       ],
       "type": "assets"
     }
