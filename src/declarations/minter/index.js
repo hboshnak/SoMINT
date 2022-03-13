@@ -1,16 +1,16 @@
 import { Actor, HttpAgent } from "@dfinity/agent";
 
 // Imports and re-exports candid interface
-import { idlFactory } from './minter.did.js';
-export { idlFactory } from './minter.did.js';
+import { idlFactory } from './nftminter.did.js';
+export { idlFactory } from './nftminter.did.js';
 // CANISTER_ID is replaced by webpack based on node environment
-export const canisterId = process.env.MINTER_CANISTER_ID;
+export const canisterId = process.env.NFTMINTER_CANISTER_ID;
 
 /**
  * 
  * @param {string | import("@dfinity/principal").Principal} canisterId Canister ID of Agent
  * @param {{agentOptions?: import("@dfinity/agent").HttpAgentOptions; actorOptions?: import("@dfinity/agent").ActorConfig}} [options]
- * @return {import("@dfinity/agent").ActorSubclass<import("./minter.did.js")._SERVICE>}
+ * @return {import("@dfinity/agent").ActorSubclass<import("./nftminter.did.js")._SERVICE>}
  */
  export const createActor = (canisterId, options) => {
   const agent = new HttpAgent({ ...options?.agentOptions });
@@ -32,7 +32,7 @@ export const canisterId = process.env.MINTER_CANISTER_ID;
 };
   
 /**
- * A ready-to-use agent for the minter canister
- * @type {import("@dfinity/agent").ActorSubclass<import("./minter.did.js")._SERVICE>}
+ * A ready-to-use agent for the nftminter canister
+ * @type {import("@dfinity/agent").ActorSubclass<import("./nftminter.did.js")._SERVICE>}
  */
- export const minter = createActor(canisterId);
+ export const nftminter = createActor(canisterId);
