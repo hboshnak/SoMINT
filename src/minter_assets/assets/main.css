@@ -1,44 +1,80 @@
+:root {
+	/* Cool Gray IBM https://www.ibm.com/design/language/color/ */
+	--cBlack: #000000;
+	--coolGray100: #121619;
+	--coolGray90: #21272a;
+	--coolGray80: #343a3f;
+	--coolGray70: #4d5358;
+	--coolGray60: #697077;
+	--coolGray50: #878d96;
+	--coolGray40: #a2a9b0;
+	--coolGray30: #c1c7cd;
+	--coolGray20: #dde1e6;
+	--coolGray10: #f2f4f8;
+	--cWhite: #ffffff;
+
+	--colorGreen: #24a148;
+	--colorRed: #fa4d56;
+	--colorOrange: #ff3d00;
+
+	/* social colors */
+	--colorTwitter: #00acee;
+	--colorDiscord: #5865f2;
+
+	/* font-size */
+	--fontSize1: 3.052rem;
+	--fontSize2: 2.441rem;
+	--fontSize3: 1.953rem;
+	--fontSize4: 1.563rem;
+	--fontSize5: 1.25rem;
+	--fontSize6: 1rem;
+	--fontSize7: 0.8rem;
+
+	/* font-weight fw */
+	--black: 800;
+	--bold: 700;
+	--medium: 400;
+	--light: 300;
+	--extraLight: 200;
+
+	/* font-family */
+	/* --font: "Karla", sans-serif; */
+
+	/* border-radius */
+	--br1: 0.125rem;
+	--br2: 0.25rem;
+	--br3: 0.5rem;
+	--br4: 1rem;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 20px; /* Root font size */
+}
+
 body {
-  font-family: sans-serif;
-  font-size: 1.5rem;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 1rem;
+	color: var(--coolGray100);
 }
 
-img {
-  max-width: 50vw;
-  max-height: 25vw;
-  display: block;
-  margin: auto;
-  margin-bottom: 50px;
+button {
+	line-height: 150%;
 }
 
-form {
-  display: flex;
-  justify-content: center;
-  gap: 0.5em;
-  flex-flow: row wrap;
-  max-width: 40vw;
-  margin: auto;
-  align-items: baseline;
+p {
+	line-height: 150%;
+	margin: 0;
 }
 
-button[type="submit"] {
-  padding: 5px 20px;
-  margin: 10px auto;
+a {
+	text-decoration: none;
+	color: var(--coolGray60);
 }
 
-#greeting {
-  margin: 10px auto;
-  padding: 10px 60px;
-  border: 1px solid #222;
-}
-
-#greeting:empty {
-  display: none;
-}
-
-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+a:hover {
+	color: var(--coolGray40);
 }
