@@ -1,12 +1,14 @@
 # ICFoxy (soMINT): Motoko Bootcamp project 
 
+[I'm an inline-style link with title](https://j76pn-raaaa-aaaai-qicmq-cai.raw.ic0.app/ "Google's Homepage")
+
 This is a basic NFT minter inspired by the DIP 721 standard (implementation not guarantee, consider this example as an educational ressource. For a production project with DIP721, please take a look at the official DIP721 repo).
 
-<img width=“964” alt=“Login” src=“https://github.com/hboshnak/blob/master/pics/login.png>
+![Login](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Login view")
 
-<img width=“964” alt=“Login” src=“https://github.com/hboshnak/blob/master/pics/logged.png>
+![Logged](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logged view")
 
-<img width=“964” alt=“Login” src=“https://github.com/hboshnak/blob/master/pics/minted.png>
+![Minted](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Minted view")
 
 Before proceeding it's good to get acquainted with:
 
