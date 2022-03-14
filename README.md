@@ -1,6 +1,6 @@
 # ICFoxy (soMINT): Motoko Bootcamp project 
 
-[I'm an inline-style link with title](https://j76pn-raaaa-aaaai-qicmq-cai.raw.ic0.app/ "Google's Homepage")
+[The ICFoxies on the mainnet](https://j76pn-raaaa-aaaai-qicmq-cai.raw.ic0.app/ "ICFoxy")
 
 This is a basic NFT minter inspired by the DIP 721 standard (implementation not guarantee, consider this example as an educational ressource. For a production project with DIP721, please take a look at the official DIP721 repo).
 
