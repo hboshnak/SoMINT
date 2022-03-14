@@ -24,7 +24,7 @@ const Mint = ({ nftminter, isConnected, plugActor }) => {
 	}
 
 	const link = "http://localhost:8080";
-	//const linkNetwork = "https://ryjl3-tyaaa-aaaaa-aaaba-cai.raw.ic0.app";
+	//const linkNetwork = "https://j76pn-raaaa-aaaai-qicmq-cai.raw.ic0.app";
 
 	async function mint() {
 		if (tokensMinted < 10) {
@@ -73,7 +73,7 @@ const Mint = ({ nftminter, isConnected, plugActor }) => {
 					{tokensMinted >= 0 && tokensMinted <= 10 ? (
 						<img
 							className={css.img}
-							//src={`https://ryjl3-tyaaa-aaaaa-aaaba-cai.raw.ic0.app/${tokensMinted + 1}.svg`}
+							//src={`https://j76pn-raaaa-aaaai-qicmq-cai.raw.ic0.app/${tokensMinted + 1}.svg`}
 							src={`http://localhost:8080/${tokensMinted + 1}.svg`}
 							alt=""
 						/>
