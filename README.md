@@ -1,9 +1,12 @@
-# soMINT: Motoko Bootcamp project 
+# ICFoxy (soMINT): Motoko Bootcamp project 
 
 This is a basic NFT minter inspired by the DIP 721 standard (implementation not guarantee, consider this example as an educational ressource. For a production project with DIP721, please take a look at the official DIP721 repo).
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/login.png?raw=true)
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/logged.jpg?raw=true)
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/minted.jpg?raw=true)
+
+<img width=“964” alt=“Login” src=“https://github.com/hboshnak/blob/master/pics/login.png>
+
+<img width=“964” alt=“Login” src=“https://github.com/hboshnak/blob/master/pics/logged.png>
+
+<img width=“964” alt=“Login” src=“https://github.com/hboshnak/blob/master/pics/minted.png>
 
 Before proceeding it's good to get acquainted with:
 
