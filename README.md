@@ -4,11 +4,11 @@
 
 This is a basic NFT minter inspired by the DIP 721 standard (implementation not guarantee, consider this example as an educational ressource. For a production project with DIP721, please take a look at the official DIP721 repo).
 
-![Login](https://github.com/hboshnak/blob/master/pics/login.png "Login view")
+![Login](https://github.com/hboshnak/raw/master/pics/login.png "Login view")
 
-![Logged](https://github.com/hboshnak/blob/master/pics/logged.png "Logged view")
+![Logged](https://github.com/hboshnak/raw/master/pics/logged.png "Logged view")
 
-![Minted](https://github.com/hboshnak/blob/master/pics/minted.png "Minted view")
+![Minted](https://github.com/hboshnak/raw/master/pics/minted.png "Minted view")
 
 Before proceeding it's good to get acquainted with:
 
